@@ -1,0 +1,11 @@
+D:\VS Workspace\WPF\Student_Score_Management_System\DAL\bin\Debug\net8.0-windows\DAL.deps.json
+D:\VS Workspace\WPF\Student_Score_Management_System\DAL\bin\Debug\net8.0-windows\DAL.dll
+D:\VS Workspace\WPF\Student_Score_Management_System\DAL\bin\Debug\net8.0-windows\DAL.pdb
+D:\VS Workspace\WPF\Student_Score_Management_System\DAL\obj\Debug\net8.0-windows\DAL.GeneratedMSBuildEditorConfig.editorconfig
+D:\VS Workspace\WPF\Student_Score_Management_System\DAL\obj\Debug\net8.0-windows\DAL.AssemblyInfoInputs.cache
+D:\VS Workspace\WPF\Student_Score_Management_System\DAL\obj\Debug\net8.0-windows\DAL.AssemblyInfo.cs
+D:\VS Workspace\WPF\Student_Score_Management_System\DAL\obj\Debug\net8.0-windows\DAL.csproj.CoreCompileInputs.cache
+D:\VS Workspace\WPF\Student_Score_Management_System\DAL\obj\Debug\net8.0-windows\DAL.dll
+D:\VS Workspace\WPF\Student_Score_Management_System\DAL\obj\Debug\net8.0-windows\refint\DAL.dll
+D:\VS Workspace\WPF\Student_Score_Management_System\DAL\obj\Debug\net8.0-windows\DAL.pdb
+D:\VS Workspace\WPF\Student_Score_Management_System\DAL\obj\Debug\net8.0-windows\ref\DAL.dll
