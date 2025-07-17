@@ -6,31 +6,25 @@
         xmlns:local="clr-namespace:SSMS.Views"
         xmlns:vm="clr-namespace:SSMS.ViewModels"
         mc:Ignorable="d"
+        x:Name="_loginWindow"
         WindowStartupLocation="CenterScreen"
         FontSize="14" 
         Title="用户登录 " Height="450" Width="800">
     <Window.DataContext>
         <vm:LoginViewModel/>
     </Window.DataContext>
-    
-    <Canvas>
-        <Canvas.Background>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                <LinearGradientBrush.GradientStops>
-                    <GradientStop Offset="0" Color="BurlyWood"/>
-                    <GradientStop Offset="1" Color="LightBlue"/>
-                </LinearGradientBrush.GradientStops>
-            </LinearGradientBrush>
-        </Canvas.Background>
+
+    <Canvas Background="{StaticResource BGBrush}">
         <TextBlock Text="学生成绩管理系统" FontSize="36" Canvas.Top="100" Canvas.Left="260"/>
         <Label Content="用户名:" Canvas.Top="180" Canvas.Left="300"/>
         <TextBox Text="{Binding Student.Name}" Canvas.Top="180" Canvas.Left="350" Width="150" Height="30"/>
         <Label Content="密码:" Canvas.Top="220" Canvas.Left="315"/>
         <TextBox Text="{Binding Student.Password}" Canvas.Top="220" Canvas.Left="350" Width="150" Height="30"/>
-        <Button Content="登录" Command="{Binding LoginCommand}" Canvas.Top="260" Canvas.Left="370"  
+        <Button Content="登  录" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=_loginWindow}"
+                Canvas.Top="270" Canvas.Left="300"  
                 Background="Pink" Width="100" Height="30"/>
-        <DataGrid x:Name="dataGrid" Height="250" Width="196">
-            
-        </DataGrid>
+        <Button Content="注  册" Command="{Binding RegisterCommand}"
+                Canvas.Top="270" Canvas.Left="440"  
+                Background="Pink" Width="100" Height="30"/>
     </Canvas>
 </Window>

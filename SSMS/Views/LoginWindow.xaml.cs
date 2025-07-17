@@ -56,9 +56,7 @@ namespace SSMS.Views
             //sqlDataAdapter.Fill(dataSet);
 
             SqlHelper sqlHelper = new SqlHelper(); 
-            DataSet dataSet = sqlHelper.ExecuteDataset(new SqlConnection(sqlHelper.ConnectionString), System.Data.CommandType.Text, "select * from student");
-
-            dataGrid.ItemsSource = dataSet.Tables[0].DefaultView;
+            DataSet dataSet = sqlHelper.ExecuteDataset("select * from student");
 
             
             var vm = this.DataContext;

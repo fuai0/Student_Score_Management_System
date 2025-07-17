@@ -18,10 +18,16 @@ namespace SSMS.MVVM
         public event EventHandler CanExecuteChanged;
 
         private Action Action { get;}
+        private Action<object> ObjectAction { get;}
 
         public DelegateCommand(Action action)
         {
             Action = action;
+        }
+
+        public DelegateCommand(Action<object> objectAction)
+        {
+            ObjectAction = objectAction;
         }
 
         public bool CanExecute(object parameter)
@@ -33,7 +39,8 @@ namespace SSMS.MVVM
         public void Execute(object parameter)
         {
             // 真正执行的代码
-            Action.Invoke();
+            Action?.Invoke();
+            ObjectAction?.Invoke(parameter);
         }
     }
 }

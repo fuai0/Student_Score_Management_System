@@ -16,3 +16,8 @@ D:\VS Workspace\WPF\Student_Score_Management_System\SSMS\obj\Debug\Views\MainWin
 D:\VS Workspace\WPF\Student_Score_Management_System\SSMS\obj\Debug\Views\LoginWindow.baml
 D:\VS Workspace\WPF\Student_Score_Management_System\SSMS\obj\Debug\Views\MainWindow.baml
 D:\VS Workspace\WPF\Student_Score_Management_System\SSMS\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\VS Workspace\WPF\Student_Score_Management_System\SSMS\obj\Debug\Styles\Button.baml
+D:\VS Workspace\WPF\Student_Score_Management_System\SSMS\obj\Debug\Styles\Style.baml
+D:\VS Workspace\WPF\Student_Score_Management_System\SSMS\obj\Debug\Views\RegisterWindow.g.cs
+D:\VS Workspace\WPF\Student_Score_Management_System\SSMS\obj\Debug\App.baml
+D:\VS Workspace\WPF\Student_Score_Management_System\SSMS\obj\Debug\Views\RegisterWindow.baml

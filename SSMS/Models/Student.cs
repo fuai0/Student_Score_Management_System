@@ -12,6 +12,9 @@ namespace SSMS.Models
     public class Student
     {
 		private int id;
+		/// <summary>
+		/// 主键Id
+		/// </summary>
 		public int Id
 		{
 			get { return id; }
@@ -19,6 +22,9 @@ namespace SSMS.Models
 		}
 
 		private string name;
+		/// <summary>
+		/// 姓名
+		/// </summary>
 		public string Name
 		{
 			get { return name; }
@@ -26,6 +32,9 @@ namespace SSMS.Models
 		}
 
 		private string password;
+		/// <summary>
+		/// 密码
+		/// </summary>
 		public string Password
 		{
 			get { return password; }
@@ -33,6 +42,9 @@ namespace SSMS.Models
 		}
 
 		private bool sex;
+		/// <summary>
+		/// 性别 true为男,false为女
+		/// </summary>
 		public bool Sex
 		{
 			get { return sex; }
@@ -40,6 +52,9 @@ namespace SSMS.Models
 		}
 
 		private string city;
+		/// <summary>
+		/// 城市
+		/// </summary>
 		public string City
 		{
 			get { return city; }
@@ -47,12 +62,24 @@ namespace SSMS.Models
 		}
 
 		private DateTime insertDate;
+		/// <summary>
+		/// 插入日期
+		/// </summary>
 		public DateTime InsertDate
 		{
 			get { return insertDate; }
 			set { insertDate = value; }
 		}
 
+		private int role;
+		/// <summary>
+		/// 权限,1为普通学生,0为管理员
+		/// </summary>
+		public int Role
+		{
+			get { return role; }
+			set { role = value; }
+		}
 
 	}
 }

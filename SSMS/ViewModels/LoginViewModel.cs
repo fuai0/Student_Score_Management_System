@@ -12,50 +12,54 @@ using System.Windows.Controls;
 using System.Windows;
 using System.Windows.Input;
 using SSMS.Views;
+using SSMS.BLL;
 
 namespace SSMS.ViewModels
 {
     public class LoginViewModel
     {
-        public Student Student { get; set; } = new Student();
+        public Student Student { get; set; } = new Student() { Name="张三",Password="123456"};
         
-        public DelegateCommand LoginCommand { get; set; }
+        public DelegateCommand LoginCommand { get; }
+        public DelegateCommand RegisterCommand { get; }
 
         public LoginViewModel()
         {
-            LoginCommand = new DelegateCommand(Button_Click);
+            LoginCommand = new DelegateCommand(OnLoginCommand);
+            RegisterCommand = new DelegateCommand(OnRegisterCommand);
         }
 
-        private void Button_Click()
+        private void OnRegisterCommand()
         {
-            SqlHelper sqlHelper = new SqlHelper();
-            DataSet dataSet = sqlHelper.ExecuteDataset(new SqlConnection(sqlHelper.ConnectionString), System.Data.CommandType.Text, $"select * from student where Name = '{Student.Name}' and Password = '{Student.Password}'");
+            new RegisterWindow().ShowDialog();
+        }
 
-            var table = dataSet.Tables[0];
-            var row = table.Rows[0];
-
-            // ORM数据库和数据实体的映射关系实现
-            List<Student> students = sqlHelper.DataSetToList<Student>(dataSet);
+        /// <summary>
+        /// 实现登录命令
+        /// </summary>
+        /// <param name="loginWindow">要关闭的登录界面</param>
+        private void OnLoginCommand(object loginWindow)
+        {
+            StudentService studentService = new StudentService();
+            List<Student> students = studentService.Login(Student);
 
             if(students.Count > 0)
             {
+                AppDate.Instance.CurrentUser = Student;
+
                 MessageBox.Show($"{Student.Name},恭喜你登录成功!");
 
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
+                if(loginWindow is LoginWindow _loginWindow)
+                {
+                    _loginWindow.Close();
+                }
             }
             else
             {
                 MessageBox.Show("您好,用户名或密码错误!"); 
             }
-
-
-            //dataGrid.ItemsSource = dataSet.Tables[0].DefaultView;
-
-
-            //var vm = this.DataContext;
-            //var student = (vm as LoginViewModel).Student;
-            //MessageBox.Show(student.Name);
         }
     }
 

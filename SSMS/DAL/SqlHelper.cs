@@ -16,38 +16,94 @@ namespace SSMS.DAL
     public class SqlHelper
     {
         public string ConnectionString { get; }
+        public SqlConnection sqlConnection { get;}
 
         public SqlHelper()
         {
             ConnectionString = ConfigurationManager.ConnectionStrings["StudentDBString"].ConnectionString;
+            sqlConnection = new SqlConnection(ConnectionString);
         }
 
         /// <summary>
-        /// 执行SQL命令并返回DataSet,适用于需要返回多个结果集或离线数据处理的场景。
+        /// 预处理命令
         /// </summary>
-        /// <param name="connection">数据库连接对象</param>
+        /// <param name="commandText"></param>
+        /// <param name="commandType"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        private SqlCommand PrepareCommand(string commandText, CommandType commandType, SqlParameter[] parameters = null)
+        {
+            if (sqlConnection == null) throw new ArgumentNullException("SqlConnection不能为空!");
+            SqlCommand sqlCommand = sqlConnection.CreateCommand();
+
+            if (sqlConnection.State != ConnectionState.Open) sqlConnection.Open();
+
+            sqlCommand.CommandType = commandType;
+            sqlCommand.CommandText = commandText;
+
+            if(parameters != null && parameters.Length > 0)
+            {
+                AttchParameters(sqlCommand, parameters);
+            }
+
+            return sqlCommand;
+        }
+
+        private void AttchParameters(SqlCommand sqlCommand, SqlParameter[] parameters)
+        {
+            if (sqlCommand == null) throw new ArgumentNullException("sqlCommand不得为空!");
+            if (parameters == null) throw new ArgumentNullException("parameters不得为空!");
+
+            foreach(var item in parameters)
+            {
+                if(item != null)
+                {
+                    if(item.Value == null)
+                    {
+                        item.Value = DBNull.Value;
+                    }
+                    sqlCommand.Parameters.Add(item);
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// 执行SQL查询命令并返回DataSet,适用于需要返回多个结果集或离线数据处理的场景。
+        /// </summary>
         /// <param name="commandType">命令类型</param>
         /// <param name="commandText">SQL命令文本</param>
         /// <param name="parameters">SQL参数数组</param>
         /// <returns>包含查询结果的DataSet对象,包含零个或多个DataTable</returns>
         /// <exception cref="ArgumentNullException">当connection参数为null时抛出</exception>
-        public DataSet ExecuteDataset(SqlConnection connection,CommandType commandType,string commandText,params SqlParameter[] parameters)
+        public DataSet ExecuteDataset(string commandText, CommandType commandType = CommandType.Text, params SqlParameter[] parameters)
         {
-            if (connection == null) throw new ArgumentNullException("SqlConnection不能为空!");
-            SqlCommand sqlCommand = connection.CreateCommand();
+            SqlCommand sqlCommand = PrepareCommand(commandText, commandType, parameters);
 
-            if (connection.State != ConnectionState.Open) connection.Open();
-
-            sqlCommand.CommandType = commandType;
-            sqlCommand.CommandText = commandText;
-            using(SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand))
+            using (SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand))
             {
                 DataSet dataSet = new DataSet();
                 sqlDataAdapter.Fill(dataSet);
-                connection.Close();
+                sqlConnection.Close();
                 return dataSet;
             }
         }
+
+        /// <summary>
+        /// 执行非查询SQL命令（如 INSERT、UPDATE、DELETE）
+        /// </summary>
+        /// <param name="commandText">SQL命令文本</param>
+        /// <param name="commandType">命令类型，默认为SQL文本</param>
+        /// <param name="parameters">SQL参数数组，可选</param>
+        /// <returns>受影响的行数</returns>
+        public int ExecuteNonQuery(string commandText, CommandType commandType = CommandType.Text, params SqlParameter[] parameters)
+        {
+            SqlCommand sqlCommand = PrepareCommand(commandText, commandType, parameters);
+
+            return sqlCommand.ExecuteNonQuery();
+        }
+
+
 
         /// <summary>
         /// 将DataSet中的数据转换为指定类型的对象列表

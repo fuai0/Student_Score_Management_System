@@ -4,9 +4,44 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SSMS.Views"
+        xmlns:vm="clr-namespace:SSMS.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="CanResizeWithGrip"
+        Title="{Binding CurrentUser.Name}" Height="900" Width="1600">
+    <Window.DataContext>
+        <vm:MainViewModel/>
+    </Window.DataContext>
+    
+    <Grid Background="{StaticResource BGBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!-- 顶部 -->
+        <Grid Background="#1488C6">
+            
+        </Grid>
+
+        <!-- 底部 -->
+        <Grid Grid.Row="1" Background="#F7F8F9">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="330"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <!-- 菜单栏 -->
+            <StackPanel>
+                
+            </StackPanel>
+
+            <!-- 内容 -->
+            <ContentControl x:Name="container">
+                
+            </ContentControl>
+
+        </Grid>
     </Grid>
 </Window>
