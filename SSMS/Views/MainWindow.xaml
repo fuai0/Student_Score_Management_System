@@ -9,7 +9,11 @@
         WindowStyle="None"
         AllowsTransparency="True"
         ResizeMode="CanResizeWithGrip"
-        Title="{Binding CurrentUser.Name}" Height="900" Width="1600">
+        Title="学生成绩管理系统" Height="900" Width="1600">
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="90"/>
+    </WindowChrome.WindowChrome>
+    
     <Window.DataContext>
         <vm:MainViewModel/>
     </Window.DataContext>
@@ -22,7 +26,22 @@
 
         <!-- 顶部 -->
         <Grid Background="#1488C6">
-            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" >
+                <TextBlock Text="&#xf2a3;" FontSize="48" Foreground="White" FontFamily="/Fonts/#FontAwesome" VerticalAlignment="Center" Margin="35 0 0 0"/>
+                <TextBlock Text="{Binding AppDate.Name}" FontSize="36" Foreground="White" VerticalAlignment="Center" Margin="35 0 0 0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1">
+                <TextBlock Text="{Binding AppDate.CurrentUser.Name}" FontSize="36" Foreground="White" VerticalAlignment="Center" Margin="0 0 10 0"/>
+                <Border Width="60" Height="60" CornerRadius="35" BorderBrush="White" Margin="0 0 15 0" WindowChrome.IsHitTestVisibleInChrome="True">
+                    <TextBlock Text="&#xf2d4;" FontFamily="/Fonts/#FontAwesome" 
+                               Style="{StaticResource TextBlockCloseStyle}"
+                               MouseUp="TextBlock_MouseUp"/>
+                </Border>
+            </StackPanel>
         </Grid>
 
         <!-- 底部 -->
@@ -33,13 +52,15 @@
             </Grid.ColumnDefinitions>
 
             <!-- 菜单栏 -->
-            <StackPanel>
-                
-            </StackPanel>
+            <Border Background="#273142">
+                <StackPanel>
+                    <RadioButton Click="RadioButton_Click" Style="{StaticResource RadioButtonMenuStyle}" Tag="&#xf015;" Content="首页" />
+                    <RadioButton Click="RadioButton_Click" Style="{StaticResource RadioButtonMenuStyle}" Tag="&#xf2bb;" Content="用户管理" />
+                </StackPanel>
+            </Border>
 
             <!-- 内容 -->
-            <ContentControl x:Name="container">
-                
+            <ContentControl x:Name="container" Grid.Column="1">
             </ContentControl>
 
         </Grid>

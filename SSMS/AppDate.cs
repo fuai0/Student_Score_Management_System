@@ -9,6 +9,8 @@ namespace SSMS
 {
     public class AppDate
     {
+        public string Name => "学生成绩管理系统";
+
         /// <summary>
         /// 当前登录用户
         /// </summary>

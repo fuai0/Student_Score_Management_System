@@ -21,3 +21,9 @@ D:\VS Workspace\WPF\Student_Score_Management_System\SSMS\obj\Debug\Styles\Style.
 D:\VS Workspace\WPF\Student_Score_Management_System\SSMS\obj\Debug\Views\RegisterWindow.g.cs
 D:\VS Workspace\WPF\Student_Score_Management_System\SSMS\obj\Debug\App.baml
 D:\VS Workspace\WPF\Student_Score_Management_System\SSMS\obj\Debug\Views\RegisterWindow.baml
+D:\VS Workspace\WPF\Student_Score_Management_System\SSMS\obj\Debug\Styles\TextBlock.baml
+D:\VS Workspace\WPF\Student_Score_Management_System\SSMS\obj\Debug\Styles\RadioButton.baml
+D:\VS Workspace\WPF\Student_Score_Management_System\SSMS\obj\Debug\Views\StudentView.g.cs
+D:\VS Workspace\WPF\Student_Score_Management_System\SSMS\obj\Debug\Views\StudentView.baml
+D:\VS Workspace\WPF\Student_Score_Management_System\SSMS\obj\Debug\Views\IndexView.g.cs
+D:\VS Workspace\WPF\Student_Score_Management_System\SSMS\obj\Debug\Views\IndexView.baml

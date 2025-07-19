@@ -23,6 +23,38 @@ namespace SSMS.Views
         public MainWindow()
         {
             InitializeComponent();
+
+            Loaded += MainWindow_Loaded;
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            if(AppDate.Instance.CurrentUser.Role == 0)
+            {
+                container.Content = new StudentView();
+            }
+            else
+            {
+                container.Content = new IndexView();
+            }
+        }
+
+        private void TextBlock_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void RadioButton_Click(object sender, RoutedEventArgs e)
+        {
+            RadioButton button = (RadioButton)sender;
+
+            if (button != null)
+            {
+                if (button.Content.ToString() == "首页")
+                    container.Content = new IndexView();
+                else if (button.Content.ToString() == "用户管理")
+                    container.Content = new StudentView();
+            }
         }
     }
 }

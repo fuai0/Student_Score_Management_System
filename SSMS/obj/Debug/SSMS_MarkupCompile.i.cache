@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\VS Workspace\WPF\Student_Score_Management_System\SSMS\App.xaml
-5953328072
+10851301118
 
-161259167973
+21-2053835934
 14-1486485296
-Styles\Button.xaml;Styles\Style.xaml;Views\LoginWindow.xaml;Views\MainWindow.xaml;Views\RegisterWindow.xaml;
+Styles\Button.xaml;Styles\Converter.xaml;Styles\RadioButton.xaml;Styles\Style.xaml;Styles\TextBlock.xaml;Views\IndexView.xaml;Views\LoginWindow.xaml;Views\MainWindow.xaml;Views\RegisterWindow.xaml;Views\StudentView.xaml;
 
 False
 
