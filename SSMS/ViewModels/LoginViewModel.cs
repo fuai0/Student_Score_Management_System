@@ -18,7 +18,7 @@ namespace SSMS.ViewModels
 {
     public class LoginViewModel
     {
-        public Student Student { get; set; } = new Student() { Name="张三",Password="123456"};
+        public Student Student { get; set; } = new Student() { Name="admin",Password="123456"};
         
         public DelegateCommand LoginCommand { get; }
         public DelegateCommand RegisterCommand { get; }
@@ -40,14 +40,11 @@ namespace SSMS.ViewModels
         /// <param name="loginWindow">要关闭的登录界面</param>
         private void OnLoginCommand(object loginWindow)
         {
-            StudentService studentService = new StudentService();
-            List<Student> students = studentService.Login(Student);
+            List<Student> students = StudentService.Instance.Login(Student);
 
             if(students.Count > 0)
             {
-                AppDate.Instance.CurrentUser = Student;
-
-                MessageBox.Show($"{Student.Name},恭喜你登录成功!");
+                AppDate.Instance.CurrentUser = students[0];
 
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
@@ -58,7 +55,7 @@ namespace SSMS.ViewModels
             }
             else
             {
-                MessageBox.Show("您好,用户名或密码错误!"); 
+                System.Windows.MessageBox.Show("您好,用户名或密码错误!"); 
             }
         }
     }

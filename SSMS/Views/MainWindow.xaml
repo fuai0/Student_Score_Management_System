@@ -17,8 +17,10 @@
     <Window.DataContext>
         <vm:MainViewModel/>
     </Window.DataContext>
-    
-    <Grid Background="{StaticResource BGBrush}">
+
+    <Grid>
+        <Grid x:Name="marker" Visibility="Collapsed" Background="Black" Panel.ZIndex="1" Opacity=".5"/>
+        <Grid Background="{StaticResource BGBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="90"/>
             <RowDefinition/>
@@ -55,7 +57,8 @@
             <Border Background="#273142">
                 <StackPanel>
                     <RadioButton Click="RadioButton_Click" Style="{StaticResource RadioButtonMenuStyle}" Tag="&#xf015;" Content="首页" />
-                    <RadioButton Click="RadioButton_Click" Style="{StaticResource RadioButtonMenuStyle}" Tag="&#xf2bb;" Content="用户管理" />
+                    <RadioButton Click="RadioButton_Click" Style="{StaticResource RadioButtonMenuStyle}" Tag="&#xf2bb;" Content="用户管理" 
+                                 Visibility="{Binding AppDate.CurrentUser.Role,Converter={StaticResource RoleToVisibleConverter}}"/>
                 </StackPanel>
             </Border>
 
@@ -64,5 +67,6 @@
             </ContentControl>
 
         </Grid>
+    </Grid>
     </Grid>
 </Window>

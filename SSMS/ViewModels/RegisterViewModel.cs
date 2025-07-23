@@ -37,19 +37,18 @@ namespace SSMS.ViewModels
             Student.InsertDate = DateTime.Now;
             Student.Role = 1;
 
-            StudentService studentService = new StudentService();
-            int count = studentService.Regsiter(Student);
+            int count = StudentService.Instance.Regsiter(Student);
             if(count == -1)
             {
-                MessageBox.Show("请填写内容!");
+                System.Windows.MessageBox.Show("请填写内容!");
             }
             else if(count == 0)
             {
-                MessageBox.Show($"未能成功注册!");
+                System.Windows.MessageBox.Show($"未能成功注册!");
             }
             else
             {
-                MessageBox.Show($"{Student.Name},恭喜你成功注册!");
+                System.Windows.MessageBox.Show($"{Student.Name},恭喜你成功注册!");
             }
         }
     }

@@ -61,7 +61,6 @@ namespace SSMS.Views
             
             var vm = this.DataContext;
             var student = (vm as LoginViewModel).Student;
-            MessageBox.Show(student.Name);
         }
     }
 }

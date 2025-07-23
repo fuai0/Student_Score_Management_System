@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SSMS.Helper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,6 +38,8 @@ namespace SSMS.Views
             {
                 container.Content = new IndexView();
             }
+
+            Marker.Instance.Init(marker);
         }
 
         private void TextBlock_MouseUp(object sender, MouseButtonEventArgs e)

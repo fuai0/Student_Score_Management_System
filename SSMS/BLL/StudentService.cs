@@ -16,6 +16,8 @@ namespace SSMS.BLL
     /// </summary>
     public class StudentService
     {
+        public static StudentService Instance = new Lazy<StudentService>(() => new StudentService()).Value;
+
         /// <summary>
         /// 登录用户
         /// </summary>
@@ -23,11 +25,10 @@ namespace SSMS.BLL
         /// <returns></returns>
         public List<Student> Login(Student student)
         {
-            SqlHelper sqlHelper = new SqlHelper();
-            DataSet dataSet = sqlHelper.ExecuteDataset($"select * from student where Name = '{student.Name}' and Password = '{student.Password}'");
+            DataSet dataSet = SqlHelper.Instance.ExecuteDataset($"select * from student where Name = '{student.Name}' and Password = '{student.Password}'");
 
             // ORM数据库和数据实体的映射关系实现
-            List<Student> students = sqlHelper.DataSetToList<Student>(dataSet);
+            List<Student> students = SqlHelper.Instance.DataSetToList<Student>(dataSet);
 
             return students;
         }
@@ -44,7 +45,6 @@ namespace SSMS.BLL
             if (String.IsNullOrEmpty(student.Password)) return -1;
 
             // 写入数据库
-            SqlHelper sqlHelper = new SqlHelper();
             string sql = $"insert into Student (Name,Password,City,Sex,InsertDate,Role) values(@Name,@Password,@City,@Sex,@InsertDate,@Role)";
             SqlParameter[] parameters = new SqlParameter[]
             {
@@ -55,7 +55,21 @@ namespace SSMS.BLL
                 new SqlParameter("@InsertDate",student.InsertDate),
                 new SqlParameter("@Role",student.Role)
             };
-            return sqlHelper.ExecuteNonQuery(sql,CommandType.Text,parameters);
+            return SqlHelper.Instance.ExecuteNonQuery(sql,CommandType.Text,parameters);
+        }
+
+        /// <summary>
+        /// 获取所有用户数据
+        /// </summary>
+        /// <returns></returns>
+        public List<Student> GetAll()
+        {
+
+            string sql = "select * from student";
+
+            DataSet dataSet = SqlHelper.Instance.ExecuteDataset(sql);
+            List<Student> students = SqlHelper.Instance.DataSetToList<Student>(dataSet);
+            return students;
         }
 
     }

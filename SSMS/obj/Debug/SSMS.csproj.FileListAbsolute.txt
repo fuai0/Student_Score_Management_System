@@ -27,3 +27,11 @@ D:\VS Workspace\WPF\Student_Score_Management_System\SSMS\obj\Debug\Views\Student
 D:\VS Workspace\WPF\Student_Score_Management_System\SSMS\obj\Debug\Views\StudentView.baml
 D:\VS Workspace\WPF\Student_Score_Management_System\SSMS\obj\Debug\Views\IndexView.g.cs
 D:\VS Workspace\WPF\Student_Score_Management_System\SSMS\obj\Debug\Views\IndexView.baml
+D:\VS Workspace\WPF\Student_Score_Management_System\SSMS\obj\Debug\Styles\Converter.baml
+D:\VS Workspace\WPF\Student_Score_Management_System\SSMS\obj\Debug\Styles\DataGrid.baml
+D:\VS Workspace\WPF\Student_Score_Management_System\SSMS\bin\Debug\Microsoft.Xaml.Behaviors.dll
+D:\VS Workspace\WPF\Student_Score_Management_System\SSMS\bin\Debug\Microsoft.Xaml.Behaviors.pdb
+D:\VS Workspace\WPF\Student_Score_Management_System\SSMS\bin\Debug\Microsoft.Xaml.Behaviors.xml
+D:\VS Workspace\WPF\Student_Score_Management_System\SSMS\obj\Debug\SSMS.csproj.Up2Date
+D:\VS Workspace\WPF\Student_Score_Management_System\SSMS\obj\Debug\Views\MessageBox.g.cs
+D:\VS Workspace\WPF\Student_Score_Management_System\SSMS\obj\Debug\Views\MessageBox.baml

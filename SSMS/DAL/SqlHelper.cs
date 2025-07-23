@@ -15,6 +15,8 @@ namespace SSMS.DAL
     /// </summary>
     public class SqlHelper
     {
+        public static SqlHelper Instance = new Lazy<SqlHelper>(() => new SqlHelper()).Value;
+
         public string ConnectionString { get; }
         public SqlConnection sqlConnection { get;}
 
@@ -103,8 +105,6 @@ namespace SSMS.DAL
             return sqlCommand.ExecuteNonQuery();
         }
 
-
-
         /// <summary>
         /// 将DataSet中的数据转换为指定类型的对象列表
         /// </summary>
@@ -154,3 +154,5 @@ namespace SSMS.DAL
         }
     }
 }
+
+

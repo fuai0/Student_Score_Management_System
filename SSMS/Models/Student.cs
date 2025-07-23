@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SSMS.MVVM;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ namespace SSMS.Models
 	/// <summary>
 	/// 学生表
 	/// </summary>
-    public class Student
+    public class Student:ObservableObject
     {
 		private int id;
 		/// <summary>
@@ -18,7 +19,7 @@ namespace SSMS.Models
 		public int Id
 		{
 			get { return id; }
-			set { id = value; }
+			set { id = value; RaisePropertyChanged(); }
 		}
 
 		private string name;
@@ -28,8 +29,8 @@ namespace SSMS.Models
 		public string Name
 		{
 			get { return name; }
-			set { name = value; }
-		}
+			set { name = value; RaisePropertyChanged(); }
+        }
 
 		private string password;
 		/// <summary>
@@ -38,8 +39,8 @@ namespace SSMS.Models
 		public string Password
 		{
 			get { return password; }
-			set { password = value; }
-		}
+			set { password = value; RaisePropertyChanged(); }
+        }
 
 		private bool sex;
 		/// <summary>
@@ -48,8 +49,8 @@ namespace SSMS.Models
 		public bool Sex
 		{
 			get { return sex; }
-			set { sex = value; }
-		}
+			set { sex = value; RaisePropertyChanged(); }
+        }
 
 		private string city;
 		/// <summary>
@@ -58,8 +59,8 @@ namespace SSMS.Models
 		public string City
 		{
 			get { return city; }
-			set { city = value; }
-		}
+			set { city = value; RaisePropertyChanged(); }
+        }
 
 		private DateTime insertDate;
 		/// <summary>
@@ -68,8 +69,8 @@ namespace SSMS.Models
 		public DateTime InsertDate
 		{
 			get { return insertDate; }
-			set { insertDate = value; }
-		}
+			set { insertDate = value; RaisePropertyChanged(); }
+        }
 
 		private int role;
 		/// <summary>
@@ -78,8 +79,8 @@ namespace SSMS.Models
 		public int Role
 		{
 			get { return role; }
-			set { role = value; }
-		}
+			set { role = value; RaisePropertyChanged(); }
+        }
 
 	}
 }

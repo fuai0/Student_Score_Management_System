@@ -1,4 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <converter:RoleToVisibleConverter x:Key=""
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:converter="clr-namespace:SSMS.Converter">
+    <converter:RoleToVisibleConverter x:Key="RoleToVisibleConverter"/>
+    <converter:RoleToTextConverter x:Key="RoleToTextConverter"/>
+    <converter:SexToTextConverter x:Key="SexToTextConverter"/>
 </ResourceDictionary>

@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\VS Workspace\WPF\Student_Score_Management_System\SSMS\App.xaml
-9-1730646342
+12-1294003806
 
-19-2098155414
-14-1486485296
-Styles\Button.xaml;Styles\RadioButton.xaml;Styles\Style.xaml;Styles\TextBlock.xaml;Views\IndexView.xaml;Views\LoginWindow.xaml;Views\MainWindow.xaml;Views\RegisterWindow.xaml;Views\StudentView.xaml;
+2530604187
+15-1263849904
+Styles\Button.xaml;Styles\Converter.xaml;Styles\DataGrid.xaml;Styles\RadioButton.xaml;Styles\Style.xaml;Styles\TextBlock.xaml;Views\IndexView.xaml;Views\LoginWindow.xaml;Views\MainWindow.xaml;Views\MessageBox.xaml;Views\RegisterWindow.xaml;Views\StudentView.xaml;
 
 False
 

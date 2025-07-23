@@ -16,13 +16,12 @@ namespace SSMS.Converter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var result = Visibility.Collapsed;
-            if (value == null) return result;
+            if (value == null) return Visibility.Collapsed;
             if(int.TryParse(value.ToString(),out int r))
             {
-                result = r == 0 ? Visibility.Visible : Visibility.Collapsed;
+                return r == 0 ? Visibility.Visible : Visibility.Collapsed;
             }
-            return result;
+            return Visibility.Collapsed;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

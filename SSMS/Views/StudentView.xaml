@@ -4,10 +4,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SSMS.Views"
-             xmlns:vm="clr-namespace:SSMS.ViewModels"
+             xmlns:vm="clr-namespace:SSMS.ViewModels" 
+             xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
              Background="#f7f8f9"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="860" d:DesignWidth="1270">
+    <b:Interaction.Triggers>
+        <b:EventTrigger EventName="Loaded">
+            <b:InvokeCommandAction Command="{Binding LoadedCommand}"/>
+        </b:EventTrigger>
+    </b:Interaction.Triggers>
     <UserControl.DataContext>
         <vm:StudentViewModel/>
     </UserControl.DataContext>
@@ -19,12 +25,68 @@
         <Border Background="White" BorderBrush="#ECEEF1" BorderThickness="0 0 0 1">
             <DockPanel>
                 <TextBlock DockPanel.Dock="Left" Text="用户管理" FontSize="20" Foreground="#30394A" VerticalAlignment="Center" Margin="25 0 0 0"/>
-                <Button DockPanel.Dock="Right" Content="+  新增用户" Style="{StaticResource ButtonBlueStyle}" HorizontalAlignment="Right" Margin=" 0 0 25 0"/>
+                <Button DockPanel.Dock="Right" Content="+  新增用户" Command="{Binding MarkerCommand}" Style="{StaticResource ButtonBlueStyle}" HorizontalAlignment="Right" Margin=" 0 0 25 0"/>
             </DockPanel>
         </Border>
         <Border Grid.Row="1" Background="White" BorderBrush="#ECEEF1" BorderThickness="0 0 0 1">
-            <DataGrid Margin="25">
- 
+            <DataGrid Margin="25" ItemsSource="{Binding Students}" Style="{StaticResource DataGridStyle}" 
+                      RowStyle="{StaticResource DataGridRowStyle}" CellStyle="{StaticResource DataGridCellStyle}">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Width="50" Header="序号">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <TextBlock Text="{Binding Id}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="100" Header="姓名">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <TextBlock Text="{Binding Name}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="50" Header="性别">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <TextBlock Text="{Binding Sex,Converter={StaticResource SexToTextConverter}}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="100" Header="城市">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <TextBlock Text="{Binding City}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="100" Header="角色">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <TextBlock Text="{Binding Role,Converter={StaticResource RoleToTextConverter}}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="200" Header="注册日期">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <TextBlock Text="{Binding InsertDate}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
             </DataGrid>
         </Border>
     </Grid>
